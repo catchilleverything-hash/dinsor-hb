@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DINSOR HB | Official Music & Streaming Links</title>
+    
+    <!-- Google Fonts: Prompt & Inter for clean Thai/English luxury typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for clean icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'Inter', 'sans-serif'],
+                        en: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        pure: '#FFFFFF',
+                        alabaster: '#FAFAFA',
+                        stone: '#F3F4F6',
+                        ash: '#E5E7EB',
+                        charcoal: '#18181B',
+                        slate: '#71717A',
+                        gold: {
+                            light: '#DFC58B',
+                            DEFAULT: '#C5A059',
+                            dark: '#A6823E',
+                            subtle: 'rgba(197, 160, 89, 0.12)'
+                        }
+                    },
+                    boxShadow: {
+                        'luxury': '0 10px 35px -10px rgba(24, 24, 27, 0.06)',
+                        'gold-glow': '0 8px 25px -5px rgba(197, 160, 89, 0.28)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAFAFA;
+            color: #18181B;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom subtle scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAFAFA;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4D4D8;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C5A059;
+        }
+
+        /* Metallic Gold Gradient Text & Borders */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #A6823E 0%, #D4AF37 50%, #A6823E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #C5A059 0%, #D4AF37 50%, #B38D44 100%);
+        }
+
+        /* Equalizer Bar Animation */
+        @keyframes eqPulse {
+            0%, 100% { height: 4px; }
+            50% { height: 16px; }
+        }
+        .eq-bar {
+            width: 2.5px;
+            background-color: #C5A059;
+            border-radius: 9999px;
+            transition: height 0.2s ease;
+        }
+        .playing .eq-bar:nth-child(1) { animation: eqPulse 0.8s infinite ease-in-out; }
+        .playing .eq-bar:nth-child(2) { animation: eqPulse 0.6s infinite ease-in-out 0.2s; }
+        .playing .eq-bar:nth-child(3) { animation: eqPulse 0.9s infinite ease-in-out 0.4s; }
+        .playing .eq-bar:nth-child(4) { animation: eqPulse 0.7s infinite ease-in-out 0.1s; }
+
+        /* Smooth Vinyl Rotation when playing */
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .vinyl-spin {
+            animation: spinSlow 14s linear infinite;
+            animation-play-state: paused;
+        }
+        .playing .vinyl-spin {
+            animation-play-state: running;
+        }
+
+        /* Toast Transition */
+        .toast-enter {
+            transform: translateY(100%) scale(0.95);
+            opacity: 0;
+        }
+        .toast-active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between py-8 px-4 sm:px-6 selection:bg-gold/20 selection:text-charcoal">
+
+    <!-- Subtle Top Ambient Glow -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-gradient-to-b from-gold/10 to-transparent pointer-events-none -z-10"></div>
+
+    <!-- Main Container (Mobile-First Luxury Card Width) -->
+    <main class="w-full max-w-lg mx-auto space-y-6">
+
+        <!-- Top Utility Bar -->
+        <div class="flex items-center justify-between px-1">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pure border border-ash shadow-2xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+                <span class="text-[11px] font-en tracking-widest uppercase text-slate font-medium">Official Artist Hub</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button onclick="copyCurrentPageLink()" class="p-2 rounded-full bg-pure border border-ash text-slate hover:text-gold hover:border-gold/50 transition-all shadow-2xs" title="แชร์หน้าเว็บนี้">
+                    <i class="fa-solid fa-arrow-up-from-bracket text-xs"></i>
+                </button>
+                <button onclick="toggleManagerModal(true)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-pure border border-ash text-xs text-slate hover:text-charcoal hover:border-gold transition-all shadow-2xs" title="จัดการลิงก์เพลง DistroKid และดาวน์โหลดไฟล์">
+                    <i class="fa-solid fa-sliders text-gold text-[11px]"></i>
+                    <span>จัดการลิงก์ & ส่งออก</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 1. ARTIST HEADER / HERO SECTION -->
+        <header class="bg-pure rounded-3xl p-7 sm:p-8 border border-ash/90 shadow-luxury text-center relative overflow-hidden">
+            <!-- Subtle Decorative Corner Gold Accents -->
+            <div class="absolute top-0 left-0 w-16 h-16 border-t border-l border-gold/30 rounded-tl-3xl pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-16 h-16 border-b border-r border-gold/30 rounded-br-3xl pointer-events-none"></div>
+
+            <!-- Artist Avatar Frame (Supports uploaded photo or stylized HB portrait emblem) -->
+            <div class="relative w-28 h-28 mx-auto mb-5 group">
+                <div class="w-full h-full rounded-full bg-alabaster border-2 border-gold/70 p-1.5 shadow-gold-glow flex items-center justify-center">
+                    <div id="heroAvatarContainer" class="w-full h-full rounded-full bg-charcoal flex items-center justify-center relative overflow-hidden">
+                        <!-- Default Stylized HB Artist Portrait Badge (Replaced automatically if user uploads photo in Lookbook) -->
+                        <svg viewBox="0 0 120 120" class="w-full h-full">
+                            <defs>
+                                <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#DFC58B"/>
+                                    <stop offset="50%" stop-color="#C5A059"/>
+                                    <stop offset="100%" stop-color="#A6823E"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="120" height="120" fill="#18181B"/>
+                            <circle cx="60" cy="60" r="52" fill="none" stroke="#27272A" stroke-width="1"/>
+                            <circle cx="60" cy="60" r="44" fill="none" stroke="url(#goldRing)" stroke-width="1.2" stroke-dasharray="4 3"/>
+                            <!-- Minimalist Pencil HB Emblem -->
+                            <polygon points="60,16 54,28 66,28" fill="#C5A059"/>
+                            <rect x="55" y="28" width="10" height="3.5" fill="#DFC58B"/>
+                            <!-- Monogram -->
+                            <text x="60" y="67" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="600" font-size="24" letter-spacing="2">HB</text>
+                            <text x="60" y="83" text-anchor="middle" fill="#C5A059" font-family="Inter, sans-serif" font-weight="500" font-size="7.5" letter-spacing="2.5">DINSOR</text>
+                        </svg>
+                    </div>
+                </div>
+                <!-- Verified Gold Badge -->
+                <div class="absolute bottom-0.5 right-0.5 w-7 h-7 rounded-full gold-gradient-bg border-2 border-pure flex items-center justify-center shadow-sm" title="Official Artist • Catchill Music">
+                    <i class="fa-solid fa-check text-pure text-[11px]"></i>
+                </div>
+            </div>
+
+            <!-- Artist Name & Bio -->
+            <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-charcoal font-en">
+                DINSOR <span class="gold-gradient-text">HB</span>
+            </h1>
+            <p class="text-xs font-en uppercase tracking-[0.18em] text-gold-dark font-medium mt-1.5">
+                ศิลปิน & นักแต่งเพลงอิสระ
+            </p>
+            <p class="text-xs text-slate font-medium mt-1">
+                สังกัด <span class="text-charcoal">Catchill Music</span> • DistroKid
+            </p>
+            <p class="text-sm text-slate font-light mt-3 max-w-sm mx-auto leading-relaxed">
+                ถ่ายทอดทุกความรู้สึกผ่านบทเพลง Thai Indie-Pop, Soul & Acoustic รับฟังซิงเกิลใหม่ล่าสุดและทุกผลงานได้แล้ววันนี้
+            </p>
+
+            <!-- Primary Streaming & Social Pill Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mt-6 pt-5 border-t border-stone" id="socialLinksContainer">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Prominent Music Production / Songwriting CTA Button -->
+            <div class="mt-3.5 flex justify-center">
+                <button onclick="toggleContactMusicModal(true)" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-2.5 rounded-full bg-charcoal hover:bg-charcoal/90 text-pure border border-gold/60 shadow-gold-glow text-xs font-medium tracking-wide transition-all duration-200 hover:-translate-y-0.5">
+                    <i class="fa-solid fa-music text-gold"></i>
+                    <span>ติดต่อทำเพลง / รับแต่งเพลง</span>
+                    <span class="px-2 py-0.5 rounded-full bg-gold/20 text-gold-light text-[10px] font-en uppercase tracking-wider">Production</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 2. FEATURED / SPOTLIGHT RELEASE CARD -->
+        <section id="spotlightSection" class="bg-pure rounded-3xl p-6 sm:p-7 border border-gold/45 shadow-luxury relative transition-all">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <span id="spotlightBadge" class="px-2.5 py-0.5 rounded-full bg-gold-subtle text-gold-dark text-[11px] font-medium tracking-wide border border-gold/30">
+                        <i class="fa-solid fa-sparkles mr-1 text-[10px]"></i>ซิงเกิลใหม่ล่าสุด
+                    </span>
+                    <span id="spotlightReleaseDate" class="text-xs text-slate font-en">20 Nov 2026</span>
+                </div>
+                <!-- Equalizer Indicator -->
+                <div id="eqVisualizer" class="flex items-end gap-1 h-4 px-2">
+                    <span class="eq-bar h-1.5"></span>
+                    <span class="eq-bar h-2.5"></span>
+                    <span class="eq-bar h-1"></span>
+                    <span class="eq-bar h-2"></span>
+                </div>
+            </div>
+
+            <!-- Track Info & Vinyl Visual -->
+            <div class="flex items-center gap-4 sm:gap-5">
+                <!-- Minimalist Vinyl Artwork with YouTube Thumbnail fallback -->
+                <div id="vinylDisk" class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl bg-stone border border-ash p-2 flex items-center justify-center overflow-hidden shadow-inner">
+                    <div class="vinyl-spin w-full h-full rounded-full bg-charcoal border-2 border-gold/60 flex items-center justify-center relative shadow-md overflow-hidden">
+                        <img id="spotlightThumb" src="" alt="Track Cover" class="w-full h-full object-cover opacity-80 hidden" onerror="this.classList.add('hidden')">
+                        <div class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center bg-charcoal/80 backdrop-blur-2xs z-10">
+                            <div class="w-5 h-5 rounded-full gold-gradient-bg flex items-center justify-center">
+                                <div class="w-1.5 h-1.5 rounded-full bg-pure"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Song Title & Details -->
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2">
+                        <h2 id="spotlightTitle" class="text-lg sm:text-xl font-semibold text-charcoal truncate">
+                            ขอโอกาสให้คนโง่คนนี้
+                        </h2>
+                    </div>
+                    <p id="spotlightSubtitle" class="text-xs sm:text-sm text-slate mt-0.5 truncate">
+                        DINSOR HB • 4:29 • DistroKid
+                    </p>
+                    <p id="spotlightMood" class="text-xs text-gold-dark font-light mt-1.5 line-clamp-1">
+                        "ซิงเกิลใหม่ล่าสุดจาก DINSOR HB ฟังได้แล้ววันนี้บน YouTube และทุกสตรีมมิ่ง"
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactive YouTube Embed Toggle Bar -->
+            <div class="mt-5 bg-alabaster rounded-2xl p-3 border border-stone">
+                <div class="flex items-center justify-between gap-3">
+                    <button id="toggleEmbedBtn" onclick="toggleSpotlightEmbed()" class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl gold-gradient-bg text-pure text-xs font-medium shadow-gold-glow hover:opacity-95 transition-all">
+                        <i id="embedBtnIcon" class="fa-solid fa-play text-[11px]"></i>
+                        <span id="embedBtnText">เปิดฟังเพลงนี้ทันที (YouTube Player)</span>
+                    </button>
+                    <button onclick="copySongLink(activeSongId)" class="px-3.5 py-2.5 rounded-xl bg-pure border border-ash hover:border-gold text-slate hover:text-gold-dark text-xs transition-colors shrink-0" title="คัดลอกลิงก์เพลงนี้">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+
+                <!-- Expandable Embedded YouTube Player -->
+                <div id="spotlightEmbedWrapper" class="hidden mt-3 pt-3 border-t border-ash/70">
+                    <div class="relative w-full pt-[56.25%] rounded-xl overflow-hidden bg-charcoal shadow-inner">
+                        <iframe id="spotlightYoutubeIframe" class="absolute inset-0 w-full h-full" src="" title="DINSOR HB Music Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direct Streaming Platform Buttons for Selected Song -->
+            <div class="mt-5 space-y-2.5">
+                <p class="text-[11px] uppercase tracking-wider text-slate font-en font-medium text-center">
+                    เลือกฟังเพลงนี้บนแพลตฟอร์มสตรีมมิ่ง
+                </p>
+                <div id="spotlightPlatforms" class="grid grid-cols-2 gap-2.5">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ARTIST LOOKBOOK / 3 CONCEPT GALLERY -->
+        <section class="bg-pure rounded-3xl p-6 sm:p-7 border border-ash/90 shadow-luxury">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-base font-semibold text-charcoal flex items-center gap-2">
+                        <i class="fa-solid fa-camera-retro text-gold"></i>
+                        <span>ภาพลักษณ์ศิลปิน (Artist Lookbook)</span>
+                    </h3>
+                    <p class="text-xs text-slate mt-0.5">กดเลือกดู 3 สไตล์ หรืออัปโหลดรูปจริงของคุณเพื่อตั้งเป็นรูปโปรไฟล์</p>
+                </div>
+            </div>
+
+            <!-- 3 Switchable Look Tabs -->
+            <div class="grid grid-cols-3 gap-2 mb-4" id="lookSelectorTabs">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Active Look Preview Card -->
+            <div id="activeLookCard" class="rounded-2xl bg-alabaster border border-stone p-4 flex flex-col sm:flex-row items-center gap-4 transition-all">
+                <div id="lookVisualBox" class="w-full sm:w-28 h-36 rounded-xl bg-charcoal border border-gold/40 overflow-hidden shrink-0 flex items-center justify-center relative shadow-sm">
+                    <!-- Stylized vector illustration or uploaded photo -->
+                </div>
+                <div class="flex-1 text-center sm:text-left space-y-1.5">
+                    <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gold-subtle text-gold-dark text-[10px] font-en font-medium uppercase tracking-wider" id="lookTag">
+                        LOOK 01 • MAIN AVATAR
+                    </div>
+                    <h4 id="lookTitle" class="text-sm font-semibold text-charcoal">Casual Street HB</h4>
+                    <p id="lookDesc" class="text-xs text-slate leading-relaxed">
+                        ลุคสตรีทคลีนๆ เสื้อยืดสีขาวสกรีนโลโก้ HB กางเกงยีนส์เซอร์ สะท้อนตัวตนที่เข้าถึงง่ายและเป็นกันเอง
+                    </p>
+                    <div class="pt-1.5 flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                        <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-pure border border-ash hover:border-gold text-xs text-charcoal font-medium shadow-2xs transition-all">
+                            <i class="fa-solid fa-image text-gold text-[11px]"></i>
+                            <span>อัปโหลดรูปจริงลุคนี้</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="handleLookImageUpload(event)">
+                        </label>
+                        <button id="setAsAvatarBtn" onclick="setCurrentLookAsHeroAvatar()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-gold-subtle hover:bg-gold/20 text-gold-dark text-xs font-medium transition-all">
+                            <i class="fa-solid fa-user-check text-[11px]"></i>
+                            <span>ตั้งเป็นรูปโปรไฟล์หลัก</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DISCOGRAPHY / FULL SONG CATALOG -->
+        <section class="bg-pure rounded-3xl p-6 sm:p-7 border border-ash/90 shadow-luxury">
+            <div class="flex flex-col gap-3.5 mb-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-base font-semibold text-charcoal flex items-center gap-2">
+                            <i class="fa-solid fa-compact-disc text-gold"></i>
+                            <span>รวมผลงานเพลงทั้งหมด (DistroKid)</span>
+                        </h3>
+                        <p class="text-xs text-slate mt-0.5">กด "ฟังเพลง" เพื่อเปิดเล่นทันที หรือคัดลอกลิงก์แชร์</p>
+                    </div>
+
+                    <!-- Category Filter Pills -->
+                    <div class="flex items-center gap-1 bg-alabaster p-1 rounded-full border border-stone self-start">
+                        <button onclick="filterSongs('all')" data-filter="all" class="filter-btn active px-3 py-1 rounded-full text-xs font-medium bg-pure text-charcoal shadow-2xs transition-all">
+                            ทั้งหมด
+                        </button>
+                        <button onclick="filterSongs('latest')" data-filter="latest" class="filter-btn px-3 py-1 rounded-full text-xs font-medium text-slate hover:text-charcoal transition-all">
+                            ซิงเกิลล่าสุด
+                        </button>
+                        <button onclick="filterSongs('popular')" data-filter="popular" class="filter-btn px-3 py-1 rounded-full text-xs font-medium text-slate hover:text-charcoal transition-all">
+                            เพลงแนะนำ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass text-slate text-xs absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                    <input type="text" id="songSearchInput" oninput="renderSongList()" placeholder="ค้นหาชื่อเพลงของ DINSOR HB..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-alabaster border border-stone focus:border-gold focus:bg-pure focus:outline-none text-xs text-charcoal transition-all">
+                </div>
+            </div>
+
+            <!-- Song List Container -->
+            <div id="songListContainer" class="space-y-2.5">
+                <!-- Populated dynamically by JS -->
+            </div>
+        </section>
+
+        <!-- 5. DISTROKID & YOUTUBE CHANNEL BANNER -->
+        <section class="bg-gradient-to-r from-pure via-alabaster to-pure rounded-2xl p-5 border border-gold/40 shadow-2xs flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-charcoal text-gold flex items-center justify-center shrink-0 border border-gold/40">
+                    <i class="fa-brands fa-youtube text-lg"></i>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-charcoal">Catchill Music Official Channel</h4>
+                    <p class="text-xs text-slate mt-0.5">ติดตามมิวสิกวิดีโอและเพลงใหม่ล่าสุดบน YouTube (@HB_CatchillMusic)</p>
+                </div>
+            </div>
+            <a id="youtubeChannelMainBtn" href="https://www.youtube.com/@HB_CatchillMusic" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl gold-gradient-bg text-pure text-xs font-medium shadow-gold-glow hover:opacity-95 transition-opacity shrink-0">
+                ติดตามช่อง <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- 6. MINIMALIST LUXURY FOOTER -->
+    <footer class="w-full max-w-lg mx-auto mt-10 pt-6 border-t border-ash/80 text-center space-y-3">
+        <div class="flex flex-wrap items-center justify-center gap-2.5">
+            <button onclick="toggleContactMusicModal(true)" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-charcoal text-pure border border-gold/50 hover:opacity-95 text-xs font-medium transition-all shadow-2xs">
+                <i class="fa-solid fa-wand-magic-sparkles text-gold"></i>
+                <span>รับแต่งเพลง / ทำดนตรี (Catchill Music Production)</span>
+            </button>
+            <button onclick="copyWorkEmail()" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pure border border-ash hover:border-gold text-xs text-charcoal transition-all shadow-2xs">
+                <i class="fa-regular fa-envelope text-gold"></i>
+                <span>ติดต่องาน: <strong id="footerEmailDisplay" class="font-en font-medium">catchillmusic.work@gmail.com</strong></span>
+                <i class="fa-regular fa-copy text-slate text-[11px]"></i>
+            </button>
+        </div>
+        <p class="text-xs text-slate font-en">
+            © 2026 <span class="text-charcoal font-medium">DINSOR HB</span> • Catchill Music | Distributed via DistroKid
+        </p>
+    </footer>
+
+    <!-- MUSIC PRODUCTION & SONGWRITING CONTACT MODAL -->
+    <div id="contactMusicModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-charcoal/50 backdrop-blur-xs p-4" onclick="closeContactMusicModal(event)">
+        <div class="bg-pure w-full max-w-md rounded-3xl border border-gold/50 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-gradient-to-r from-alabaster via-pure to-alabaster border-b border-stone flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl gold-gradient-bg text-pure flex items-center justify-center shadow-gold-glow shrink-0">
+                        <i class="fa-solid fa-sliders text-sm"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-en uppercase tracking-widest text-gold-dark font-semibold block">Catchill Music Production</span>
+                        <h3 class="text-base font-semibold text-charcoal">ติดต่อทำเพลง / รับแต่งเพลง</h3>
+                    </div>
+                </div>
+                <button onclick="toggleContactMusicModal(false)" class="w-8 h-8 rounded-full bg-pure border border-ash text-slate hover:text-charcoal flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 overflow-y-auto space-y-5 text-xs">
+                <!-- Service Highlights -->
+                <div class="p-4 rounded-2xl bg-alabaster border border-stone space-y-2.5">
+                    <p id="contactServiceIntro" class="text-charcoal font-medium leading-relaxed">
+                        บริการรับแต่งเนื้อร้อง-ทำนอง และโปรดิวซ์ดนตรีครบวงจร โดยทีมงาน DINSOR HB (Catchill Music)
+                    </p>
+                    <div class="grid grid-cols-2 gap-2 pt-1 text-[11px] text-slate">
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-check text-gold text-[10px]"></i>
+                            <span>แต่งเนื้อร้อง & ทำนองใหม่</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-check text-gold text-[10px]"></i>
+                            <span>ทำดนตรี / Demo ทุกแนว</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-check text-gold text-[10px]"></i>
+                            <span>เพลงโฆษณา / เพลงองค์กร</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-check text-gold text-[10px]"></i>
+                            <span>เพลงของขวัญโอกาสพิเศษ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Direct Contact Channels -->
+                <div class="space-y-2.5">
+                    <span class="block text-[11px] font-semibold uppercase tracking-wider text-gold-dark">ช่องทางติดต่อพูดคุยและส่งบรีฟ</span>
+
+                    <!-- TikTok Direct Message -->
+                    <a id="contactTiktokLink" href="https://www.tiktok.com/@catchill_music" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center justify-between p-3.5 rounded-2xl bg-charcoal text-pure hover:bg-charcoal/95 border border-gold/40 shadow-sm transition-all group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-pure/10 flex items-center justify-center text-gold">
+                                <i class="fa-brands fa-tiktok text-base"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-xs">ทักแชตผ่าน TikTok (@catchill_music)</div>
+                                <div class="text-[11px] text-ash/80">ตอบกลับรวดเร็ว • ชมผลงานตัวอย่างได้ทันที</div>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full gold-gradient-bg text-pure text-[11px] font-medium shrink-0">
+                            ทักแชต <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i>
+                        </span>
+                    </a>
+
+                    <!-- Line ID Copy Card -->
+                    <div class="flex items-center justify-between p-3 rounded-2xl bg-pure border border-ash hover:border-gold/60 transition-colors">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="w-9 h-9 rounded-xl bg-[#06C755]/10 text-[#06C755] flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-line text-lg"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="text-[11px] text-slate">Line Official / ติดต่องาน</div>
+                                <div id="contactLineDisplay" class="font-en font-semibold text-charcoal text-xs truncate">@catchillmusic</div>
+                            </div>
+                        </div>
+                        <button onclick="copyContactLine()" class="px-3 py-1.5 rounded-xl bg-alabaster hover:bg-gold-subtle border border-stone hover:border-gold/40 text-charcoal hover:text-gold-dark font-medium transition-colors shrink-0">
+                            <i class="fa-regular fa-copy mr-1"></i>คัดลอก
+                        </button>
+                    </div>
+
+                    <!-- Email Copy Card -->
+                    <div class="flex items-center justify-between p-3 rounded-2xl bg-pure border border-ash hover:border-gold/60 transition-colors">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="w-9 h-9 rounded-xl bg-gold-subtle text-gold-dark flex items-center justify-center shrink-0">
+                                <i class="fa-regular fa-envelope text-base"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="text-[11px] text-slate">อีเมลส่งรายละเอียดงาน (Email)</div>
+                                <div id="contactEmailDisplay" class="font-en font-semibold text-charcoal text-xs truncate">catchillmusic.work@gmail.com</div>
+                            </div>
+                        </div>
+                        <button onclick="copyWorkEmail()" class="px-3 py-1.5 rounded-xl bg-alabaster hover:bg-gold-subtle border border-stone hover:border-gold/40 text-charcoal hover:text-gold-dark font-medium transition-colors shrink-0">
+                            <i class="fa-regular fa-copy mr-1"></i>คัดลอก
+                        </button>
+                    </div>
+
+                    <!-- YouTube Portfolio Link -->
+                    <a id="contactYoutubeLink" href="https://www.youtube.com/@HB_CatchillMusic" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center justify-between p-3 rounded-2xl bg-pure border border-ash hover:border-gold/60 transition-colors">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="w-9 h-9 rounded-xl bg-[#FF0000]/10 text-[#FF0000] flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-youtube text-base"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="text-[11px] text-slate">ผลงานเพลง & ตัวอย่างเสียง</div>
+                                <div class="font-en font-semibold text-charcoal text-xs truncate">YouTube: @HB_CatchillMusic</div>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1.5 rounded-xl bg-alabaster border border-stone text-slate text-[11px] font-medium shrink-0">
+                            เปิดดู <i class="fa-solid fa-chevron-right ml-1 text-[9px]"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Quick Brief Template Copy Box -->
+                <div class="p-4 rounded-2xl bg-gold-subtle/60 border border-gold/30 space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <span class="font-semibold text-gold-dark flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-lines"></i> แบบฟอร์มบรีฟงานเบื้องต้น
+                        </span>
+                        <span class="text-[10px] text-slate">กดคัดลอกแล้วส่งในแชตได้เลย</span>
+                    </div>
+                    <p class="text-[11px] text-charcoal/80 leading-relaxed bg-pure/80 p-2.5 rounded-xl border border-gold/20">
+                        สนใจติดต่อทำเพลงกับ DINSOR HB (Catchill Music)<br>
+                        • แนวเพลง / สไตล์อ้างอิง:<br>
+                        • เนื้อหา / อารมณ์ของเพลง:<br>
+                        • รูปแบบงาน (แต่งเนื้อ+ทำนอง / ดนตรีครบวงจร):<br>
+                        • งบประมาณโดยประมาณ & กำหนดวันใช้งาน:
+                    </p>
+                    <button onclick="copyMusicBriefTemplate()" class="w-full py-2.5 px-4 rounded-xl gold-gradient-bg text-pure font-medium shadow-gold-glow hover:opacity-95 transition-opacity flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-copy"></i>
+                        <span>คัดลอกแบบฟอร์มบรีฟงานเบื้องต้น</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MINI YOUTUBE PREVIEW MODAL (Opens when clicking "ฟังเพลง" in list) -->
+    <div id="miniPlayerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-charcoal/50 backdrop-blur-xs p-4" onclick="closeMiniPlayerModal(event)">
+        <div class="bg-pure w-full max-w-md rounded-3xl border border-gold/40 shadow-2xl overflow-hidden" onclick="event.stopPropagation()">
+            <div class="px-5 py-3.5 bg-alabaster border-b border-stone flex items-center justify-between">
+                <div class="min-w-0 pr-2">
+                    <span class="text-[10px] font-en uppercase tracking-wider text-gold-dark font-semibold block">Now Playing • DINSOR HB</span>
+                    <h4 id="modalSongTitle" class="text-sm font-semibold text-charcoal truncate">ขอโอกาสให้คนโง่คนนี้</h4>
+                </div>
+                <button onclick="closeMiniPlayerModal()" class="w-8 h-8 rounded-full bg-pure border border-ash text-slate hover:text-charcoal flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <div class="p-4 space-y-3.5">
+                <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden bg-charcoal">
+                    <iframe id="modalYoutubeIframe" class="absolute inset-0 w-full h-full" src="" title="YouTube Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="grid grid-cols-2 gap-2" id="modalPlatformLinks">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LINK MANAGER & EXPORT MODAL -->
+    <div id="managerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-charcoal/45 backdrop-blur-xs p-4">
+        <div class="bg-pure w-full max-w-lg rounded-3xl border border-ash shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-alabaster border-b border-stone flex items-center justify-between">
+                <div>
+                    <h3 class="text-base font-semibold text-charcoal flex items-center gap-2">
+                        <i class="fa-solid fa-pen-to-square text-gold"></i>
+                        <span>จัดการลิงก์ DistroKid & ส่งออกไฟล์เว็บ</span>
+                    </h3>
+                    <p class="text-xs text-slate mt-0.5">วางลิงก์ Spotify / Apple Music / HyperFollow แล้วกดดาวน์โหลดไฟล์ไปใช้งานจริงได้เลย</p>
+                </div>
+                <button onclick="toggleManagerModal(false)" class="w-8 h-8 rounded-full bg-pure border border-ash text-slate hover:text-charcoal flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body (Scrollable Form) -->
+            <div class="p-6 overflow-y-auto space-y-5 text-sm">
+                <!-- Global HyperFollow & Socials -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gold-dark">ลิงก์หลักของศิลปิน (Global Artist Links)</label>
+                    <div>
+                        <span class="text-xs text-slate block mb-1">DistroKid HyperFollow URL (ลิงก์รวมหน้าศิลปิน)</span>
+                        <input type="url" id="editHyperfollow" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en" placeholder="https://distrokid.com/hyperfollow/dinsorhb/...">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <span class="text-xs text-slate block mb-1">YouTube Handle (@HB_CatchillMusic)</span>
+                            <input type="url" id="editYoutubeChannel" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en">
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate block mb-1">TikTok Profile (@catchill_music)</span>
+                            <input type="url" id="editTiktokProfile" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en" placeholder="https://www.tiktok.com/@catchill_music">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <span class="text-xs text-slate block mb-1">Spotify Artist Profile</span>
+                            <input type="url" id="editSpotifyArtist" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-stone">
+
+                <!-- Contact & Music Production Settings -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gold-dark">ข้อมูลติดต่อทำเพลง (Contact & Production)</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <span class="text-xs text-slate block mb-1">Line ID ติดต่อทำเพลง</span>
+                            <input type="text" id="editContactLine" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en" placeholder="@catchillmusic">
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate block mb-1">อีเมลติดต่องาน (Email)</span>
+                            <input type="email" id="editContactEmail" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en" placeholder="catchillmusic.work@gmail.com">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <span class="text-xs text-slate block mb-1">ข้อความแนะนำบริการรับทำเพลง</span>
+                            <input type="text" id="editServiceDesc" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs" placeholder="บริการรับแต่งเนื้อร้อง-ทำนอง และโปรดิวซ์ดนตรีครบวงจร...">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-stone">
+
+                <!-- Song Selector to Edit Individual Song Links -->
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gold-dark">แก้ไขลิงก์รายเพลง</label>
+                        <button onclick="addNewSongPrompt()" class="text-xs text-gold-dark hover:underline font-medium">
+                            + เพิ่มซิงเกิลใหม่
+                        </button>
+                    </div>
+                    
+                    <select id="editSongSelect" onchange="loadSongIntoEditor()" class="w-full px-3.5 py-2.5 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-medium text-charcoal">
+                        <!-- Options populated via JS -->
+                    </select>
+
+                    <div class="grid grid-cols-1 gap-2.5 pt-1">
+                        <div>
+                            <span class="text-xs text-slate block mb-1">ชื่อเพลง</span>
+                            <input type="text" id="editSongTitle" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs">
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate block mb-1">YouTube / YouTube Music Link</span>
+                            <input type="url" id="editSongYoutube" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en" placeholder="https://www.youtube.com/watch?v=...">
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate block mb-1">Spotify Track Link</span>
+                            <input type="url" id="editSongSpotify" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en" placeholder="https://open.spotify.com/track/...">
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate block mb-1">Apple Music Link</span>
+                            <input type="url" id="editSongApple" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en" placeholder="https://music.apple.com/th/album/...">
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate block mb-1">TikTok Sound / Video Link (เฉพาะเพลงนี้)</span>
+                            <input type="url" id="editSongTiktok" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en" placeholder="https://www.tiktok.com/@catchill_music">
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate block mb-1">DistroKid HyperFollow (เฉพาะเพลงนี้)</span>
+                            <input type="url" id="editSongDistrokid" class="w-full px-3.5 py-2 rounded-xl bg-alabaster border border-ash focus:border-gold focus:outline-none text-xs font-en" placeholder="https://distrokid.com/hyperfollow/...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer Actions -->
+            <div class="px-6 py-4 bg-alabaster border-t border-stone flex flex-wrap items-center justify-between gap-2">
+                <button onclick="resetToDefaultData()" class="px-3 py-2 rounded-xl border border-ash text-xs text-slate hover:text-charcoal bg-pure">
+                    รีเซ็ตค่าเริ่มต้น
+                </button>
+                <div class="flex items-center gap-2">
+                    <button onclick="downloadStandaloneHTML()" class="px-3.5 py-2 rounded-xl bg-charcoal text-pure hover:bg-charcoal/90 text-xs font-medium flex items-center gap-1.5 shadow-sm" title="ดาวน์โหลดไฟล์ index.html ที่บันทึกข้อมูลทั้งหมดแล้วไปอัปโหลดขึ้นโฮสต์ได้ทันที">
+                        <i class="fa-solid fa-download text-gold"></i>
+                        <span>ดาวน์โหลดไฟล์ index.html</span>
+                    </button>
+                    <button onclick="saveEditorChanges()" class="px-4 py-2 rounded-xl gold-gradient-bg text-pure text-xs font-medium shadow-gold-glow">
+                        บันทึกข้อมูล
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION (Replaces alert() cleanly) -->
+    <div id="toastNotification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 toast-enter">
+        <div class="bg-charcoal text-pure px-4 py-2.5 rounded-full shadow-xl border border-gold/40 flex items-center gap-2.5 text-xs">
+            <i class="fa-solid fa-circle-check text-gold"></i>
+            <span id="toastMessage">คัดลอกลิงก์เรียบร้อยแล้ว</span>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & INTERACTIVITY -->
+    <script>
+        // Helper to extract YouTube Video ID from URL
+        function getYoutubeId(url) {
+            if (!url) return null;
+            const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const match = url.match(regExp);
+            return match ? match[1] : null;
+        }
+
+        // Real DistroKid & YouTube Topic Discography for DINSOR HB (Catchill Music)
+        const DEFAULT_DATA = {
+            hyperfollowUrl: "https://distrokid.com/hyperfollow/dinsorhb",
+            heroAvatarImage: "", // Stores uploaded base64/URL if set by user
+            contactInfo: {
+                lineId: "@catchillmusic",
+                email: "catchillmusic.work@gmail.com",
+                serviceDesc: "บริการรับแต่งเนื้อร้อง-ทำนอง และโปรดิวซ์ดนตรีครบวงจร โดยทีมงาน DINSOR HB (Catchill Music)"
+            },
+            socials: [
+                { name: "YouTube (@HB_CatchillMusic)", label: "@HB_CatchillMusic", icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@HB_CatchillMusic" },
+                { name: "TikTok (@catchill_music)", label: "@catchill_music", icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@catchill_music" },
+                { name: "YouTube Music (dinsor hb - Topic)", label: "YT Music", icon: "fa-solid fa-circle-play", url: "https://music.youtube.com/search?q=dinsor+hb" },
+                { name: "Spotify", label: "Spotify", icon: "fa-brands fa-spotify", url: "https://open.spotify.com/search/DINSOR%20HB" },
+                { name: "Apple Music", label: "Apple Music", icon: "fa-brands fa-apple", url: "https://music.apple.com/th/search?term=DINSOR%20HB" }
+            ],
+            looks: [
+                {
+                    id: "look-1",
+                    tabLabel: "Look 01",
+                    tag: "LOOK 01 • MAIN AVATAR",
+                    title: "Casual Street HB",
+                    desc: "ลุคสตรีทคลีนๆ เสื้อยืดสีขาวสกรีนโลโก้ HB กางเกงยีนส์เซอร์ สะท้อนตัวตนที่เข้าถึงง่ายและอบอุ่น",
+                    imageUrl: "",
+                    svgFallback: `<svg viewBox="0 0 120 150" class="w-full h-full"><rect width="120" height="150" fill="#27272A"/><circle cx="60" cy="48" r="18" fill="#DFC58B" opacity="0.9"/><path d="M32 135 C32 95, 88 95, 88 135 Z" fill="#FAFAFA"/><text x="72" y="106" fill="#18181B" font-family="Inter" font-weight="700" font-size="10">HB</text></svg>`
+                },
+                {
+                    id: "look-2",
+                    tabLabel: "Look 02",
+                    tag: "LOOK 02 • SOUL & GOLD",
+                    title: "Soul & Saxophone Gold",
+                    desc: "ลุคสูทสีขาวสุดหรูพร้อมแซกโซโฟนสีทอง ถ่ายทอดอารมณ์เพลง Soul, R&B และความละมุนยามค่ำคืน",
+                    imageUrl: "",
+                    svgFallback: `<svg viewBox="0 0 120 150" class="w-full h-full"><rect width="120" height="150" fill="#18181B"/><circle cx="60" cy="46" r="17" fill="#E5E7EB"/><path d="M30 135 L42 82 L78 82 L90 135 Z" fill="#FFFFFF"/><path d="M74 68 Q85 95 66 112" stroke="#D4AF37" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="65" cy="113" r="6" fill="#C5A059"/></svg>`
+                },
+                {
+                    id: "look-3",
+                    tabLabel: "Look 03",
+                    tag: "LOOK 03 • ACOUSTIC STAGE",
+                    title: "Acoustic Stage Warmth",
+                    desc: "ลุคแจ็คเก็ตยีนส์สะพายกีตาร์โปร่งบนเวทีไม้ แสงสีทองอบอุ่น สไตล์นักแต่งเพลงและดนตรีโฟล์ก-ป๊อป",
+                    imageUrl: "",
+                    svgFallback: `<svg viewBox="0 0 120 150" class="w-full h-full"><rect width="120" height="150" fill="#292524"/><circle cx="60" cy="46" r="17" fill="#DFC58B"/><path d="M30 135 L40 82 L80 82 L90 135 Z" fill="#475569"/><ellipse cx="52" cy="112" rx="16" ry="12" fill="#92400E" stroke="#C5A059" stroke-width="1.5"/><line x1="62" y1="104" x2="88" y2="85" stroke="#D4AF37" stroke-width="3"/></svg>`
+                }
+            ],
+            songs: [
+                {
+                    id: "song-1",
+                    title: "ขอโอกาสให้คนโง่คนนี้",
+                    subtitle: "DINSOR HB • Single",
+                    releaseDate: "20 Nov 2026",
+                    duration: "4:29",
+                    badge: "NEW SINGLE",
+                    category: "latest",
+                    mood: "ซิงเกิลใหม่ล่าสุดจาก DINSOR HB ถ่ายทอดคำขอโทษจากหัวใจของคนที่เพิ่งรู้ตัว",
+                    links: {
+                        youtube: "https://www.youtube.com/watch?v=b1wh4UaFjUE",
+                        spotify: "https://open.spotify.com/search/ขอโอกาสให้คนโง่คนนี้%20DINSOR%20HB",
+                        apple: "https://music.apple.com/th/search?term=ขอโอกาสให้คนโง่คนนี้%20DINSOR%20HB",
+                        tiktok: "https://www.tiktok.com/@catchill_music",
+                        distrokid: "https://distrokid.com/hyperfollow/dinsorhb"
+                    }
+                },
+                {
+                    id: "song-2",
+                    title: "ไม่ใช่ใครก็ได้",
+                    subtitle: "DINSOR HB • Single",
+                    releaseDate: "14 Nov 2026",
+                    duration: "3:38",
+                    badge: "HIT",
+                    category: "popular",
+                    mood: "พื้นที่ตรงนี้มีไว้ให้เธอคนเดียว ไม่ใช่ใครก็ได้ที่จะเข้ามาแทนที่",
+                    links: {
+                        youtube: "https://www.youtube.com/watch?v=Tjf8fc75wsI",
+                        spotify: "https://open.spotify.com/search/ไม่ใช่ใครก็ได้%20DINSOR%20HB",
+                        apple: "https://music.apple.com/th/search?term=ไม่ใช่ใครก็ได้%20DINSOR%20HB",
+                        tiktok: "https://www.tiktok.com/@catchill_music",
+                        distrokid: "https://distrokid.com/hyperfollow/dinsorhb"
+                    }
+                },
+                {
+                    id: "song-3",
+                    title: "แอบรักพระจันทร์",
+                    subtitle: "DINSOR HB • Single",
+                    releaseDate: "13 Nov 2026",
+                    duration: "4:50",
+                    badge: "HIT",
+                    category: "popular",
+                    mood: "เฝ้ามองเธออยู่ไกลๆ เหมือนคนธรรมดาที่ทำได้เพียงแอบรักพระจันทร์",
+                    links: {
+                        youtube: "https://www.youtube.com/watch?v=dp2mDt-TNIU",
+                        spotify: "https://open.spotify.com/search/แอบรักพระจันทร์%20DINSOR%20HB",
+                        apple: "https://music.apple.com/th/search?term=แอบรักพระจันทร์%20DINSOR%20HB",
+                        tiktok: "https://www.tiktok.com/@catchill_music",
+                        distrokid: "https://distrokid.com/hyperfollow/dinsorhb"
+                    }
+                },
+                {
+                    id: "song-4",
+                    title: "ดินสอ HB ของเธอ",
+                    subtitle: "DINSOR HB • Signature Track",
+                    releaseDate: "11 Nov 2026",
+                    duration: "5:04",
+                    badge: "SIGNATURE",
+                    category: "popular",
+                    mood: "บทเพลงประจำตัวของ DINSOR HB เขียนเรื่องราวความทรงจำด้วยดินสอแท่งเดิม",
+                    links: {
+                        youtube: "https://www.youtube.com/watch?v=kNq0hcW-gik",
+                        spotify: "https://open.spotify.com/search/ดินสอ%20HB%20ของเธอ%20DINSOR%20HB",
+                        apple: "https://music.apple.com/th/search?term=ดินสอ%20HB%20ของเธอ",
+                        tiktok: "https://www.tiktok.com/@catchill_music",
+                        distrokid: "https://distrokid.com/hyperfollow/dinsorhb"
+                    }
+                },
+                {
+                    id: "song-5",
+                    title: "เป็นทางกลับรัก",
+                    subtitle: "DINSOR HB • Single",
+                    releaseDate: "08 Nov 2026",
+                    duration: "3:45",
+                    badge: "NEW",
+                    category: "latest",
+                    mood: "หากวันไหนเธอเหนื่อยล้า ขอให้เพลงนี้เป็นทางนำหัวใจเธอกลับมารักกัน",
+                    links: {
+                        youtube: "https://www.youtube.com/watch?v=j4nPzfhgGvg",
+                        spotify: "https://open.spotify.com/search/เป็นทางกลับรัก%20DINSOR%20HB",
+                        apple: "https://music.apple.com/th/search?term=เป็นทางกลับรัก%20DINSOR%20HB",
+                        tiktok: "https://www.tiktok.com/@catchill_music",
+                        distrokid: "https://distrokid.com/hyperfollow/dinsorhb"
+                    }
+                },
+                {
+                    id: "song-6",
+                    title: "ซ้อมยินดีซ่อนน้ำตา",
+                    subtitle: "DINSOR HB • AI ARTIST CHALLENGE SS2",
+                    releaseDate: "2026",
+                    duration: "4:12",
+                    badge: "CHALLENGE",
+                    category: "all",
+                    mood: "ผลงานพิเศษจากเวที AI ARTIST CHALLENGE SS2 ยินดีทั้งที่ข้างในยังซ่อนน้ำตา",
+                    links: {
+                        youtube: "https://www.youtube.com/@HB_CatchillMusic",
+                        spotify: "https://open.spotify.com/search/ซ้อมยินดีซ่อนน้ำตา%20DINSOR%20HB",
+                        apple: "https://music.apple.com/th/search?term=ซ้อมยินดีซ่อนน้ำตา%20DINSOR%20HB",
+                        tiktok: "https://www.tiktok.com/@catchill_music",
+                        distrokid: "https://distrokid.com/hyperfollow/dinsorhb"
+                    }
+                },
+                {
+                    id: "song-7",
+                    title: "กอดแมวรอเธอ",
+                    subtitle: "DINSOR HB • DistroKid Release",
+                    releaseDate: "2026",
+                    duration: "3:40",
+                    badge: "",
+                    category: "all",
+                    mood: "ในวันที่ฝนพรำ มีเพียงเจ้าเหมียวข้างกายกับความคิดถึงที่รอเธอ",
+                    links: {
+                        youtube: "https://www.youtube.com/@HB_CatchillMusic",
+                        spotify: "https://open.spotify.com/search/กอดแมวรอเธอ%20DINSOR%20HB",
+                        apple: "https://music.apple.com/th/search?term=กอดแมวรอเธอ%20DINSOR%20HB",
+                        tiktok: "https://www.tiktok.com/@catchill_music",
+                        distrokid: "https://distrokid.com/hyperfollow/dinsorhb"
+                    }
+                },
+                {
+                    id: "song-8",
+                    title: "รอยยิ้มกรรมพันธุ์",
+                    subtitle: "DINSOR HB • DistroKid Release",
+                    releaseDate: "2026",
+                    duration: "3:52",
+                    badge: "",
+                    category: "all",
+                    mood: "รอยยิ้มที่ส่งต่อความสุขให้ทุกคนที่ได้มอง",
+                    links: {
+                        youtube: "https://www.youtube.com/@HB_CatchillMusic",
+                        spotify: "https://open.spotify.com/search/รอยยิ้มกรรมพันธุ์%20DINSOR%20HB",
+                        apple: "https://music.apple.com/th/search?term=รอยยิ้มกรรมพันธุ์%20DINSOR%20HB",
+                        tiktok: "https://www.tiktok.com/@catchill_music",
+                        distrokid: "https://distrokid.com/hyperfollow/dinsorhb"
+                    }
+                }
+            ]
+        };
+
+        // App State (Auto-migrates legacy channel/search URLs to direct artist profiles if cached)
+        let savedRaw = localStorage.getItem('dinsor_hb_v2_data');
+        if (savedRaw) {
+            let needsSave = false;
+            if (savedRaw.includes('UC4Zc_8bg9FX3qoYAwE3KS_Q')) {
+                savedRaw = savedRaw.replace(/https:\/\/www\.youtube\.com\/channel\/UC4Zc_8bg9FX3qoYAwE3KS_Q/g, 'https://www.youtube.com/@HB_CatchillMusic');
+                needsSave = true;
+            }
+            if (savedRaw.includes('https://www.tiktok.com/search?q=DINSOR%20HB')) {
+                savedRaw = savedRaw.replace(/https:\/\/www\.tiktok\.com\/search\?q=DINSOR%20HB/g, 'https://www.tiktok.com/@catchill_music');
+                needsSave = true;
+            }
+            if (savedRaw.includes('https://www.tiktok.com/@hb_catchillmusic')) {
+                savedRaw = savedRaw.replace(/https:\/\/www\.tiktok\.com\/@hb_catchillmusic/g, 'https://www.tiktok.com/@catchill_music');
+                needsSave = true;
+            }
+            if (savedRaw.includes('@hb_catchillmusic')) {
+                savedRaw = savedRaw.replace(/@hb_catchillmusic/g, '@catchill_music');
+                needsSave = true;
+            }
+            if (needsSave) {
+                localStorage.setItem('dinsor_hb_v2_data', savedRaw);
+            }
+        }
+        let appData = savedRaw ? JSON.parse(savedRaw) : JSON.parse(JSON.stringify(DEFAULT_DATA));
+        let activeSongId = appData.songs[0].id;
+        let activeLookIndex = 0;
+        let currentFilter = 'all';
+        let isSpotlightEmbedOpen = false;
+
+        // Initialize Page
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!appData.contactInfo) {
+                appData.contactInfo = JSON.parse(JSON.stringify(DEFAULT_DATA.contactInfo));
+            }
+            renderHeroAvatar();
+            renderSocialLinks();
+            renderContactInfo();
+            renderSpotlight(activeSongId);
+            renderLookbook();
+            renderSongList();
+        });
+
+        // Render Contact & Production Info
+        function renderContactInfo() {
+            const info = appData.contactInfo || DEFAULT_DATA.contactInfo;
+            const lineEl = document.getElementById('contactLineDisplay');
+            const emailEl = document.getElementById('contactEmailDisplay');
+            const footerEmailEl = document.getElementById('footerEmailDisplay');
+            const descEl = document.getElementById('contactServiceIntro');
+            const ttLink = document.getElementById('contactTiktokLink');
+            const ytLink = document.getElementById('contactYoutubeLink');
+
+            if (lineEl) lineEl.textContent = info.lineId || '@catchillmusic';
+            if (emailEl) emailEl.textContent = info.email || 'catchillmusic.work@gmail.com';
+            if (footerEmailEl) footerEmailEl.textContent = info.email || 'catchillmusic.work@gmail.com';
+            if (descEl) descEl.textContent = info.serviceDesc || DEFAULT_DATA.contactInfo.serviceDesc;
+
+            const ttSocial = appData.socials.find(s => s.icon.includes('tiktok'));
+            const ytSocial = appData.socials.find(s => s.icon.includes('youtube'));
+            if (ttLink && ttSocial) ttLink.href = ttSocial.url;
+            if (ytLink && ytSocial) ytLink.href = ytSocial.url;
+        }
+
+        function toggleContactMusicModal(show) {
+            const modal = document.getElementById('contactMusicModal');
+            if (show) {
+                renderContactInfo();
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function closeContactMusicModal(event) {
+            if (!event || event.target === document.getElementById('contactMusicModal')) {
+                toggleContactMusicModal(false);
+            }
+        }
+
+        function copyContactLine() {
+            const lineId = (appData.contactInfo && appData.contactInfo.lineId) || '@catchillmusic';
+            copyTextToClipboard(lineId, `คัดลอก Line ID (${lineId}) เรียบร้อยแล้ว`);
+        }
+
+        function copyMusicBriefTemplate() {
+            const briefText = [
+                "สวัสดีครับ สนใจติดต่อทำเพลงกับ DINSOR HB (Catchill Music)",
+                "• แนวเพลง / สไตล์อ้างอิง: ",
+                "• เนื้อหา / อารมณ์ของเพลง: ",
+                "• รูปแบบงาน (แต่งเนื้อ+ทำนอง / ดนตรีครบวงจร): ",
+                "• งบประมาณโดยประมาณ & กำหนดวันใช้งาน: "
+            ].join("\n");
+            copyTextToClipboard(briefText, "คัดลอกแบบฟอร์มบรีฟงานแล้ว นำไปวางในแชตได้เลยครับ");
+        }
+
+        // Render Hero Avatar (Uses uploaded image if set, otherwise HB portrait badge)
+        function renderHeroAvatar() {
+            const container = document.getElementById('heroAvatarContainer');
+            if (appData.heroAvatarImage) {
+                container.innerHTML = `<img src="${appData.heroAvatarImage}" alt="DINSOR HB" class="w-full h-full object-cover object-top">`;
+            }
+        }
+
+        // Render Header Social Pill Buttons
+        function renderSocialLinks() {
+            const container = document.getElementById('socialLinksContainer');
+            container.innerHTML = appData.socials.map(social => `
+                <a href="${social.url}" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-alabaster border border-ash hover:border-gold hover:bg-pure text-charcoal hover:text-gold-dark text-xs font-medium transition-all duration-200 shadow-2xs hover:-translate-y-0.5"
+                   title="${social.name}">
+                    <i class="${social.icon} text-sm text-gold-dark"></i>
+                    <span class="font-en">${social.label || social.name}</span>
+                </a>
+            `).join('');
+        }
+
+        // Render Featured Spotlight Card
+        function renderSpotlight(songId) {
+            const song = appData.songs.find(s => s.id === songId) || appData.songs[0];
+            if (!song) return;
+            activeSongId = song.id;
+
+            document.getElementById('spotlightTitle').textContent = song.title;
+            document.getElementById('spotlightSubtitle').textContent = `${song.subtitle} • ${song.duration || '4:00'} • DistroKid`;
+            document.getElementById('spotlightReleaseDate').textContent = song.releaseDate || '2026';
+            document.getElementById('spotlightMood').textContent = `"${song.mood}"`;
+
+            const badgeEl = document.getElementById('spotlightBadge');
+            badgeEl.innerHTML = `<i class="fa-solid fa-sparkles mr-1 text-[10px]"></i>${song.badge || 'ซิงเกิลแนะนำ'}`;
+
+            // Load YouTube thumbnail onto vinyl center if video ID exists
+            const ytId = getYoutubeId(song.links.youtube);
+            const thumbImg = document.getElementById('spotlightThumb');
+            if (ytId) {
+                thumbImg.src = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+                thumbImg.classList.remove('hidden');
+            } else {
+                thumbImg.classList.add('hidden');
+            }
+
+            // Reset embed player state when switching songs
+            if (isSpotlightEmbedOpen) {
+                if (ytId) {
+                    document.getElementById('spotlightYoutubeIframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1`;
+                } else {
+                    toggleSpotlightEmbed(false);
+                }
+            }
+
+            const platforms = [
+                {
+                    label: "YouTube",
+                    icon: "fa-brands fa-youtube",
+                    url: song.links.youtube,
+                    accent: "hover:border-[#FF0000] group-hover:text-[#FF0000]"
+                },
+                {
+                    label: "Spotify",
+                    icon: "fa-brands fa-spotify",
+                    url: song.links.spotify,
+                    accent: "hover:border-[#1DB954] group-hover:text-[#1DB954]"
+                },
+                {
+                    label: "Apple Music",
+                    icon: "fa-brands fa-apple",
+                    url: song.links.apple,
+                    accent: "hover:border-[#FA243C] group-hover:text-[#FA243C]"
+                },
+                {
+                    label: "TikTok",
+                    icon: "fa-brands fa-tiktok",
+                    url: song.links.tiktok || "https://www.tiktok.com/@catchill_music",
+                    accent: "hover:border-[#18181B] group-hover:text-[#18181B]"
+                }
+            ];
+
+            const platformsContainer = document.getElementById('spotlightPlatforms');
+            platformsContainer.innerHTML = platforms.map(p => `
+                <a href="${p.url}" target="_blank" rel="noopener noreferrer"
+                   class="group flex items-center justify-between px-4 py-3 rounded-2xl bg-alabaster hover:bg-pure border border-stone ${p.accent} transition-all duration-200 shadow-2xs">
+                    <div class="flex items-center gap-2.5">
+                        <i class="${p.icon} text-base text-charcoal transition-colors"></i>
+                        <span class="text-xs font-medium text-charcoal">${p.label}</span>
+                    </div>
+                    <span class="text-[11px] text-slate group-hover:text-gold-dark font-en flex items-center gap-1">
+                        Listen <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                    </span>
+                </a>
+            `).join('');
+        }
+
+        // Toggle Expandable YouTube Player inside Spotlight Card
+        function toggleSpotlightEmbed(forceState) {
+            const song = appData.songs.find(s => s.id === activeSongId) || appData.songs[0];
+            const ytId = getYoutubeId(song.links.youtube);
+
+            if (!ytId) {
+                window.open(song.links.youtube || "https://www.youtube.com/@HB_CatchillMusic", "_blank");
+                return;
+            }
+
+            isSpotlightEmbedOpen = typeof forceState === 'boolean' ? forceState : !isSpotlightEmbedOpen;
+            const wrapper = document.getElementById('spotlightEmbedWrapper');
+            const iframe = document.getElementById('spotlightYoutubeIframe');
+            const btnText = document.getElementById('embedBtnText');
+            const btnIcon = document.getElementById('embedBtnIcon');
+            const eqVis = document.getElementById('eqVisualizer');
+            const vinyl = document.getElementById('vinylDisk');
+
+            if (isSpotlightEmbedOpen) {
+                iframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1`;
+                wrapper.classList.remove('hidden');
+                btnText.textContent = "ซ่อนตัวเล่นวิดีโอ (Close Player)";
+                btnIcon.className = "fa-solid fa-stop text-[11px]";
+                eqVis.classList.add('playing');
+                vinyl.classList.add('playing');
+            } else {
+                iframe.src = "";
+                wrapper.classList.add('hidden');
+                btnText.textContent = "เปิดฟังเพลงนี้ทันที (YouTube Player)";
+                btnIcon.className = "fa-solid fa-play text-[11px]";
+                eqVis.classList.remove('playing');
+                vinyl.classList.remove('playing');
+            }
+        }
+
+        // --- ARTIST LOOKBOOK (3 SWITCHABLE CONCEPTS) ---
+        function renderLookbook() {
+            const tabsContainer = document.getElementById('lookSelectorTabs');
+            tabsContainer.innerHTML = appData.looks.map((look, idx) => {
+                const isActive = idx === activeLookIndex;
+                return `
+                    <button onclick="selectLook(${idx})" class="py-2 px-3 rounded-xl text-xs font-en font-medium border transition-all ${isActive ? 'bg-charcoal text-pure border-charcoal shadow-sm' : 'bg-alabaster text-slate border-stone hover:border-gold/50 hover:text-charcoal'}">
+                        ${look.tabLabel}
+                    </button>
+                `;
+            }).join('');
+
+            const activeLook = appData.looks[activeLookIndex];
+            document.getElementById('lookTag').textContent = activeLook.tag;
+            document.getElementById('lookTitle').textContent = activeLook.title;
+            document.getElementById('lookDesc').textContent = activeLook.desc;
+
+            const visualBox = document.getElementById('lookVisualBox');
+            if (activeLook.imageUrl) {
+                visualBox.innerHTML = `<img src="${activeLook.imageUrl}" alt="${activeLook.title}" class="w-full h-full object-cover object-top">`;
+            } else {
+                visualBox.innerHTML = activeLook.svgFallback;
+            }
+        }
+
+        function selectLook(index) {
+            activeLookIndex = index;
+            renderLookbook();
+        }
+
+        function handleLookImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataUrl = e.target.result;
+                appData.looks[activeLookIndex].imageUrl = dataUrl;
+                // Automatically set as Hero Avatar if Look 01 or if no Hero Avatar is set yet
+                if (activeLookIndex === 0 || !appData.heroAvatarImage) {
+                    appData.heroAvatarImage = dataUrl;
+                    renderHeroAvatar();
+                }
+                localStorage.setItem('dinsor_hb_v2_data', JSON.stringify(appData));
+                renderLookbook();
+                showToast(`อัปโหลดรูปภาพสำหรับ ${appData.looks[activeLookIndex].tabLabel} เรียบร้อยแล้ว`);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function setCurrentLookAsHeroAvatar() {
+            const activeLook = appData.looks[activeLookIndex];
+            if (!activeLook.imageUrl) {
+                showToast('กรุณากด "อัปโหลดรูปจริงลุคนี้" ก่อนตั้งเป็นรูปโปรไฟล์ครับ');
+                return;
+            }
+            appData.heroAvatarImage = activeLook.imageUrl;
+            localStorage.setItem('dinsor_hb_v2_data', JSON.stringify(appData));
+            renderHeroAvatar();
+            showToast(`ตั้งภาพ ${activeLook.title} เป็นรูปโปรไฟล์หลักแล้ว`);
+        }
+
+        // --- DISCOGRAPHY LIST & MINI PREVIEW MODAL ---
+        function renderSongList() {
+            const container = document.getElementById('songListContainer');
+            const query = (document.getElementById('songSearchInput')?.value || '').toLowerCase().trim();
+
+            const filtered = appData.songs.filter(song => {
+                const matchesCategory = currentFilter === 'all' || song.category === currentFilter;
+                const matchesSearch = !query || song.title.toLowerCase().includes(query) || song.subtitle.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-xs text-slate">ไม่พบเพลงที่ค้นหา</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map((song, idx) => {
+                const isSelected = song.id === activeSongId;
+                return `
+                    <div onclick="selectSong('${song.id}')" 
+                         class="group cursor-pointer rounded-2xl p-3.5 sm:p-4 border transition-all duration-200 ${isSelected ? 'bg-alabaster border-gold/65 shadow-2xs' : 'bg-pure border-stone hover:border-gold/40 hover:bg-alabaster/60'}">
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="flex items-center gap-3.5 min-w-0">
+                                <!-- Track Number / Active Indicator -->
+                                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 text-xs font-en font-medium transition-colors ${isSelected ? 'gold-gradient-bg text-pure shadow-gold-glow' : 'bg-stone text-slate group-hover:text-charcoal'}">
+                                    ${isSelected ? '<i class="fa-solid fa-volume-high text-[11px]"></i>' : String(idx + 1).padStart(2, '0')}
+                                </div>
+
+                                <div class="min-w-0">
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="text-sm font-semibold text-charcoal truncate group-hover:text-gold-dark transition-colors">
+                                            ${song.title}
+                                        </h4>
+                                        ${song.badge ? `<span class="px-2 py-0.5 rounded-full bg-gold-subtle text-gold-dark text-[9px] font-en font-semibold tracking-wide shrink-0">${song.badge}</span>` : ''}
+                                    </div>
+                                    <p class="text-xs text-slate truncate mt-0.5">${song.subtitle} • ${song.duration} (${song.releaseDate})</p>
+                                </div>
+                            </div>
+
+                            <!-- Quick Action Buttons -->
+                            <div class="flex items-center gap-1.5 shrink-0" onclick="event.stopPropagation()">
+                                <button onclick="openMiniPlayerModal('${song.id}')" 
+                                        class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-gold-subtle hover:bg-gold text-gold-dark hover:text-pure text-[11px] font-medium transition-colors" title="เปิดฟังเพลงนี้">
+                                    <i class="fa-solid fa-play text-[9px]"></i>
+                                    <span class="hidden sm:inline">ฟังเพลง</span>
+                                </button>
+                                <a href="${song.links.spotify}" target="_blank" rel="noopener noreferrer" 
+                                   class="w-8 h-8 rounded-full bg-pure border border-ash hover:border-gold text-slate hover:text-[#1DB954] flex items-center justify-center transition-colors" title="ฟังบน Spotify">
+                                    <i class="fa-brands fa-spotify text-xs"></i>
+                                </a>
+                                <button onclick="copySongLink('${song.id}')" 
+                                        class="w-8 h-8 rounded-full bg-pure border border-ash hover:border-gold text-slate hover:text-gold-dark flex items-center justify-center transition-colors" title="คัดลอกลิงก์เพลง">
+                                    <i class="fa-regular fa-copy text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function selectSong(songId) {
+            renderSpotlight(songId);
+            renderSongList();
+            const spotlight = document.getElementById('spotlightSection');
+            spotlight.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function filterSongs(filterType) {
+            currentFilter = filterType;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === filterType) {
+                    btn.classList.add('bg-pure', 'text-charcoal', 'shadow-2xs');
+                    btn.classList.remove('text-slate');
+                } else {
+                    btn.classList.remove('bg-pure', 'text-charcoal', 'shadow-2xs');
+                    btn.classList.add('text-slate');
+                }
+            });
+            renderSongList();
+        }
+
+        // Mini YouTube Preview Modal
+        function openMiniPlayerModal(songId) {
+            const song = appData.songs.find(s => s.id === songId);
+            if (!song) return;
+
+            const ytId = getYoutubeId(song.links.youtube);
+            if (!ytId) {
+                window.open(song.links.youtube || "https://www.youtube.com/@HB_CatchillMusic", "_blank");
+                return;
+            }
+
+            // Pause spotlight embed if open to prevent double audio
+            if (isSpotlightEmbedOpen) toggleSpotlightEmbed(false);
+
+            document.getElementById('modalSongTitle').textContent = `${song.title} — DINSOR HB`;
+            document.getElementById('modalYoutubeIframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1`;
+
+            document.getElementById('modalPlatformLinks').innerHTML = `
+                <a href="${song.links.spotify}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-alabaster border border-stone hover:border-[#1DB954] text-xs font-medium text-charcoal transition-colors">
+                    <i class="fa-brands fa-spotify text-[#1DB954]"></i> ฟังบน Spotify
+                </a>
+                <a href="${song.links.apple}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-alabaster border border-stone hover:border-[#FA243C] text-xs font-medium text-charcoal transition-colors">
+                    <i class="fa-brands fa-apple text-[#FA243C]"></i> Apple Music
+                </a>
+            `;
+
+            const modal = document.getElementById('miniPlayerModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeMiniPlayerModal() {
+            const modal = document.getElementById('miniPlayerModal');
+            document.getElementById('modalYoutubeIframe').src = "";
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Clipboard Copy Helper
+        function copyTextToClipboard(text, successMsg) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMsg);
+            } catch (err) {
+                showToast('ไม่สามารถคัดลอกได้ กรุณาลองใหม่อีกครั้ง');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        function copySongLink(songId) {
+            const song = appData.songs.find(s => s.id === songId);
+            if (!song) return;
+            const shareLink = song.links.youtube || song.links.spotify || appData.hyperfollowUrl;
+            copyTextToClipboard(shareLink, `คัดลอกลิงก์เพลง "${song.title}" แล้ว`);
+        }
+
+        function copyWorkEmail() {
+            const email = (appData.contactInfo && appData.contactInfo.email) || 'catchillmusic.work@gmail.com';
+            copyTextToClipboard(email, `คัดลอกอีเมล (${email}) เรียบร้อยแล้ว`);
+        }
+
+        function copyCurrentPageLink() {
+            copyTextToClipboard(window.location.href, 'คัดลอกลิงก์หน้าศิลปิน DINSOR HB แล้ว');
+        }
+
+        // Toast Notification Controller
+        let toastTimeout = null;
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const msgEl = document.getElementById('toastMessage');
+            msgEl.textContent = message;
+
+            toast.classList.remove('toast-enter');
+            toast.classList.add('toast-active');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('toast-active');
+                toast.classList.add('toast-enter');
+            }, 2600);
+        }
+
+        // --- LINK MANAGER & EXPORT HTML MODAL LOGIC ---
+        function toggleManagerModal(show) {
+            const modal = document.getElementById('managerModal');
+            if (show) {
+                populateEditorModal();
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function populateEditorModal() {
+            document.getElementById('editHyperfollow').value = appData.hyperfollowUrl || '';
+            const ytSocial = appData.socials.find(s => s.icon.includes('youtube'));
+            const ttSocial = appData.socials.find(s => s.icon.includes('tiktok'));
+            const spSocial = appData.socials.find(s => s.icon.includes('spotify'));
+            document.getElementById('editYoutubeChannel').value = ytSocial ? ytSocial.url : '';
+            document.getElementById('editTiktokProfile').value = ttSocial ? ttSocial.url : 'https://www.tiktok.com/@catchill_music';
+            document.getElementById('editSpotifyArtist').value = spSocial ? spSocial.url : '';
+
+            const cInfo = appData.contactInfo || DEFAULT_DATA.contactInfo;
+            document.getElementById('editContactLine').value = cInfo.lineId || '';
+            document.getElementById('editContactEmail').value = cInfo.email || '';
+            document.getElementById('editServiceDesc').value = cInfo.serviceDesc || '';
+
+            const select = document.getElementById('editSongSelect');
+            select.innerHTML = appData.songs.map(s => `<option value="${s.id}">${s.title}</option>`).join('');
+            select.value = activeSongId;
+            loadSongIntoEditor();
+        }
+
+        function loadSongIntoEditor() {
+            const selectedId = document.getElementById('editSongSelect').value;
+            const song = appData.songs.find(s => s.id === selectedId);
+            if (!song) return;
+
+            document.getElementById('editSongTitle').value = song.title;
+            document.getElementById('editSongYoutube').value = song.links.youtube || '';
+            document.getElementById('editSongSpotify').value = song.links.spotify || '';
+            document.getElementById('editSongApple').value = song.links.apple || '';
+            document.getElementById('editSongTiktok').value = song.links.tiktok || 'https://www.tiktok.com/@catchill_music';
+            document.getElementById('editSongDistrokid').value = song.links.distrokid || '';
+        }
+
+        function saveEditorChanges() {
+            appData.hyperfollowUrl = document.getElementById('editHyperfollow').value.trim() || DEFAULT_DATA.hyperfollowUrl;
+            
+            if (!appData.contactInfo) appData.contactInfo = {};
+            appData.contactInfo.lineId = document.getElementById('editContactLine').value.trim() || '@catchillmusic';
+            appData.contactInfo.email = document.getElementById('editContactEmail').value.trim() || 'catchillmusic.work@gmail.com';
+            appData.contactInfo.serviceDesc = document.getElementById('editServiceDesc').value.trim() || DEFAULT_DATA.contactInfo.serviceDesc;
+
+            const ytUrl = document.getElementById('editYoutubeChannel').value.trim();
+            const ttUrl = document.getElementById('editTiktokProfile').value.trim();
+            const spUrl = document.getElementById('editSpotifyArtist').value.trim();
+            appData.socials.forEach(s => {
+                if (s.icon.includes('youtube') && ytUrl) {
+                    s.url = ytUrl;
+                    const mainBtn = document.getElementById('youtubeChannelMainBtn');
+                    if (mainBtn) mainBtn.href = ytUrl;
+                }
+                if (s.icon.includes('tiktok') && ttUrl) s.url = ttUrl;
+                if (s.icon.includes('spotify') && spUrl) s.url = spUrl;
+            });
+
+            const selectedId = document.getElementById('editSongSelect').value;
+            const song = appData.songs.find(s => s.id === selectedId);
+            if (song) {
+                song.title = document.getElementById('editSongTitle').value.trim() || song.title;
+                song.links.youtube = document.getElementById('editSongYoutube').value.trim() || song.links.youtube;
+                song.links.spotify = document.getElementById('editSongSpotify').value.trim() || song.links.spotify;
+                song.links.apple = document.getElementById('editSongApple').value.trim() || song.links.apple;
+                song.links.tiktok = document.getElementById('editSongTiktok').value.trim() || song.links.tiktok || 'https://www.tiktok.com/@catchill_music';
+                song.links.distrokid = document.getElementById('editSongDistrokid').value.trim() || song.links.distrokid;
+            }
+
+            localStorage.setItem('dinsor_hb_v2_data', JSON.stringify(appData));
+            renderSocialLinks();
+            renderContactInfo();
+            renderSpotlight(activeSongId);
+            renderSongList();
+            toggleManagerModal(false);
+            showToast('บันทึกข้อมูลลิงก์เพลงและข้อมูลติดต่อเรียบร้อยแล้ว');
+        }
+
+        function addNewSongPrompt() {
+            const newId = 'song-' + Date.now();
+            const ttSocial = appData.socials.find(s => s.icon.includes('tiktok'));
+            const newSong = {
+                id: newId,
+                title: "ซิงเกิลใหม่ (DINSOR HB)",
+                subtitle: "DINSOR HB • Single",
+                releaseDate: "2026",
+                duration: "3:45",
+                badge: "NEW",
+                category: "latest",
+                mood: "บทเพลงใหม่ล่าสุดจาก DINSOR HB ผ่าน DistroKid",
+                links: {
+                    youtube: "https://www.youtube.com/@HB_CatchillMusic",
+                    spotify: "https://open.spotify.com",
+                    apple: "https://music.apple.com",
+                    tiktok: ttSocial ? ttSocial.url : "https://www.tiktok.com/@catchill_music",
+                    distrokid: appData.hyperfollowUrl
+                }
+            };
+            appData.songs.unshift(newSong);
+            activeSongId = newId;
+            populateEditorModal();
+            showToast('เพิ่มซิงเกิลใหม่แล้ว กรุณาวางลิงก์และกดบันทึก');
+        }
+
+        function resetToDefaultData() {
+            localStorage.removeItem('dinsor_hb_v2_data');
+            appData = JSON.parse(JSON.stringify(DEFAULT_DATA));
+            activeSongId = appData.songs[0].id;
+            renderHeroAvatar();
+            renderSocialLinks();
+            renderContactInfo();
+            renderSpotlight(activeSongId);
+            renderLookbook();
+            renderSongList();
+            toggleManagerModal(false);
+            showToast('รีเซ็ตข้อมูลกลับเป็นค่าเริ่มต้นแล้ว');
+        }
+
+        // Generates a complete standalone index.html file with all customized links & photos baked in!
+        function downloadStandaloneHTML() {
+            saveEditorChanges();
+            const serializedData = JSON.stringify(appData);
+            let fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            // Bake current appData into the downloaded HTML so anyone visiting the hosted URL sees the updated links & photos immediately
+            const injectionScript = `<script>localStorage.setItem('dinsor_hb_v2_data', ${JSON.stringify(serializedData)});<\/script>`;
+            fullHtml = fullHtml.replace('</head>', `${injectionScript}\n</head>`);
+
+            const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('ดาวน์โหลดไฟล์ index.html สำเร็จ! พร้อมอัปโหลดขึ้นเว็บได้เลย');
+        }
+    </script>
+</body>
+</html>
